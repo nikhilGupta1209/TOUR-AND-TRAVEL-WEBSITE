@@ -9,7 +9,7 @@
     outline: none;
     border: none;
     text-decoration: none;
-    transition: all .1s linear; 
+    transition: all .2s linear; 
 }
 
 ::selection{ 
@@ -54,6 +54,7 @@ section{
     padding: .2rem 1rem;
 }
 
+
 .heading span.space{
     background: none;
 }
@@ -65,7 +66,7 @@ header .logo{
 }
 
 header .logo span{
-    color: green;
+    color: black;
 }
 
 header .navbar a{
@@ -132,7 +133,8 @@ body{
 }
 
 .login-container{
-    background: rgba(0,0,0,.7);
+    /* background: rgba(0,0,0,.7); */
+    font-family: 'poppins', sans-serif;
     position: fixed;
     height: 100vh;
     width: 100%;
@@ -141,37 +143,72 @@ body{
     align-items: center;
     justify-content: center;
     z-index: 102;
+    background: linear-gradient(-30deg, #03a9f4 0%, #3a78b7 50%,#262626 50%, #607d8b 100%);
 }
 
 .login-container.active{
     top: 0;
 }
 
-.login-container form{
-    margin: 2rem;
-    padding: 2rem 2rem;
-    width: 50rem;
-    height: auto;
-    background: #fff;
-    border-radius: 3rem;
+.login-container .form{
+    position: relative;
+    padding: 50px;
+    width: 360px;
+    height: 480px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background: rgba(255,255,255,.1);
+    border-radius: 6px;
+    box-shadow: 0 5px 35px rgba(0,0,0,.2);
+}
+
+.login-container .form::after{
+    content: '';
+    position: absolute;
+    top: 5px; left: 5px; right: 5px; bottom: 5px;
+    border-radius: 5px;
+    pointer-events: none;
+    background: linear-gradient(to bottom, rgba(225,225,225,0.3) 0%,rgba(225,225,225,0.1) 15%, transparent 50%, transparent 85%, rgba(255,255,255,0.3) 100%);
 }
 
 .login-container form h3{
     text-align: center;
-    font-size: 2rem;
-    color: #444;
+    font-size: 3rem;
+    font-weight: 600;
+    color: #fff;
     padding: 1rem 1rem;
+    margin-bottom: 30px;
+    letter-spacing: 2px;
 }
 
 .login-container form .box{
     width: 100%;
     padding: 1rem;
-    color: #333;
-    border: 3px solid rgba(0,0,0,.3);
-    /* margin-top: 10px; */
-    margin-bottom: 10px;
-  
+    color: #fff;
+    border: 1px solid rgba(225,225,225,0.2);
+    background: transparent;
+    margin-bottom: 1.25rem;
+    border-radius: 0.3rem;
+    font-size: 2rem;
+    font-weight: 300;
+    box-shadow: inset 0 0 25px rgba(0,0,0,.2);
 }
+
+.login-container form .box input::placeholder{
+    color: #fff;
+}
+
+#remember{
+    position: relative;
+    display: inline-block;
+    color: #fff;
+    font-weight: 300;
+    margin-bottom: 10px;
+    cursor: pointer;
+}
+
 
 .login-container form .box:focus{
     border-color: var(--orange);
@@ -189,13 +226,15 @@ body{
 
 .btn{
     display: inline-block;
-    background: lightgreen;
-    padding: 1rem 1rem;
-    border-radius: 2rem;
+    background: #fff;
+    color: #111;
+    padding: .8rem 1rem;
     margin-left: auto;
     margin-bottom: 10px;
-    border: 2px solid rgba(0,0,0,.3);
+    box-shadow: none;
     width: 100%;
+    font-weight: 500;
+    cursor: pointer;
 }
 
 .btn:hover{
@@ -204,31 +243,22 @@ body{
     color: #333;
 }
 
-.login-container form #remember{
-    margin-bottom: 1rem;
-}
-
 .login-container form label{
     font-size: 1.5rem;
 }
 
-.forget-password {
-    margin-bottom: 1rem;
+.login-container .form p{
+    color: #fff;
+    font-weight: 300;
     font-size: 1.5rem;
-    color: black;
-    margin-left: 10rem;
+    margin-top: 5px;
 }
 
-.forget-password:hover{
-    color: orange;
+.login-container .form a{
+    color: #fff;
 }
 
-.signUp{
-    font-size: 1.5rem;
-    margin-top: .5rem;
-}
-
-.signUp:hover{
+.login-container .form a:hover{
     text-decoration: underline;
 }
 
@@ -363,11 +393,16 @@ body{
 }
 
 
+
 .packages .box-container .box{
     flex: 1 1 30rem;
     border-radius: .5rem;
     overflow: hidden;
     box-shadow: 0 1rem 2rem rgba(0,0,0,.1);
+}
+
+.packages .box-container .box:hover{
+    transform: translateY(-7px);
 }
 
 .packages .box-container .box img{
@@ -378,6 +413,7 @@ body{
 
 .packages .box-container .box .content{
     padding: 2rem;
+    margin-bottom: 5px
 }
 
 .packages .box-container .box .content h3{
@@ -430,6 +466,12 @@ body{
 
 .services .box-container .box i{
     padding: 1rem;
+    font-size: 4.5rem;
+    color: orange;
+}
+
+.services .box-container .box:hover i{
+    padding: 1rem;
     font-size: 5rem;
     color: orange;
 }
@@ -440,11 +482,22 @@ body{
     color: #333;
 }
 
+.services .box-container .box:hover h3{
+    font-size: 2.8rem;
+    color: #333;
+}
+
 .services .box-container .box p{
     padding: 1rem;
     font-size: 1.5rem;
     color: #666;
 }
+
+/* .services .box-container .box:hover p{
+    padding: 1rem;
+    font-size: 1.6rem;
+    color: #666;
+} */
 
 
 .services .box-container .box:hover{
@@ -487,6 +540,7 @@ body{
 
 .gallery .box-container .box:hover .content{
     top: 0;
+    transition: 0.5s;
 }
 
 .gallery .box-container .box .content h3{
